@@ -8,7 +8,7 @@ select
   data_type as "data_type",
   external_language as "language"
 from
-  information_schema.routines where routine_schema != 'information_schema' and routine_schema != 'pg_catalog' 
+  information_schema.routines where routine_schema != 'information_schema' and routine_schema != 'pg_catalog' and routine_schema NOT LIKE '%_timescaledb%'
   and (
    (routine_type = 'PROCEDURE' and ('procedures:' || routine_schema || '.' ||  routine_name) =OBJECT_ID_CONDITION)
    or
